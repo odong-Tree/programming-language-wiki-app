@@ -17,17 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Epw-3d-27b">
-                                <rect key="frame" x="77" y="145" width="260" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Epw-3d-27b">
+                                <rect key="frame" x="83" y="111" width="248" height="32"/>
                                 <segments>
                                     <segment title="전체"/>
                                     <segment title="즐겨 찾기"/>
                                 </segments>
                             </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rCM-D1-YCG">
-                                <rect key="frame" x="0.0" y="207" width="414" height="655"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rCM-D1-YCG">
+                                <rect key="frame" x="0.0" y="162" width="414" height="700"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2ks-Yp-Uzi">
                                     <size key="itemSize" width="128" height="128"/>
@@ -47,9 +45,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="프로그래밍 언어 백과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvs-oN-Wdw">
-                                <rect key="frame" x="80" y="77" width="255" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로그래밍 언어 백과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvs-oN-Wdw">
+                                <rect key="frame" x="79.5" y="64" width="255" height="37"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,6 +54,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rCM-D1-YCG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R5U-cH-dOT"/>
+                            <constraint firstItem="Epw-3d-27b" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.6" id="Sxb-GA-r66"/>
+                            <constraint firstItem="rCM-D1-YCG" firstAttribute="top" secondItem="Epw-3d-27b" secondAttribute="bottom" constant="20" id="a6F-o6-axl"/>
+                            <constraint firstItem="Mvs-oN-Wdw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ak8-fb-uYF"/>
+                            <constraint firstItem="Mvs-oN-Wdw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bM8-Sw-e2T"/>
+                            <constraint firstItem="Epw-3d-27b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="buD-P2-RwO"/>
+                            <constraint firstItem="rCM-D1-YCG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="r7w-xw-Wuo"/>
+                            <constraint firstItem="Epw-3d-27b" firstAttribute="top" secondItem="Mvs-oN-Wdw" secondAttribute="bottom" constant="10" id="wbW-Nl-959"/>
+                            <constraint firstItem="rCM-D1-YCG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zjT-jn-gED"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RaQ-fI-1k2"/>
                     <connections>
