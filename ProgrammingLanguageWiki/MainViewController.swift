@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegate()
+        configureAccessibility()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +26,14 @@ class MainViewController: UIViewController {
     private func setUpDelegate() {
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
+    }
+    
+    private func configureAccessibility() {
+        listSegmentedControl.subviews[1].accessibilityLabel = "모든 항목 보기"
+        listSegmentedControl.subviews[1].accessibilityIdentifier = "MainViewController.listSegmentControl.subview[0]"
+
+        listSegmentedControl.subviews[0].accessibilityLabel = "즐겨찾기 항목 보기"
+        listSegmentedControl.subviews[0].accessibilityIdentifier = "MainViewController.listSegmentControl.subview[1]"
     }
 
     @IBAction func listSegment(_ sender: UISegmentedControl) {

@@ -22,7 +22,7 @@
                                 <rect key="frame" x="83" y="115" width="248" height="32"/>
                                 <segments>
                                     <segment title="전체"/>
-                                    <segment title="즐겨 찾기"/>
+                                    <segment title="즐겨찾기"/>
                                 </segments>
                                 <connections>
                                     <action selector="listSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="ms5-5F-gdO"/>
@@ -226,10 +226,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="laq-tg-WQ7" id="Bq3-8Q-Maf"/>
+                        <outlet property="descriptionLabel" destination="Vb9-8f-glS" id="cFC-e0-IVb"/>
                         <outlet property="isLikeButton" destination="vTM-qO-o5A" id="if5-vp-o7B"/>
-                        <outlet property="languageDescriptionLabel" destination="Vb9-8f-glS" id="cFC-e0-IVb"/>
-                        <outlet property="languageImageView" destination="xR2-8z-sfI" id="2dI-jh-MyX"/>
-                        <outlet property="languageTitleLabel" destination="Ba5-ia-hCG" id="bdQ-eD-TTt"/>
+                        <outlet property="logoImageView" destination="xR2-8z-sfI" id="2dI-jh-MyX"/>
+                        <outlet property="nameLabel" destination="Ba5-ia-hCG" id="bdQ-eD-TTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5RH-ro-AOG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
