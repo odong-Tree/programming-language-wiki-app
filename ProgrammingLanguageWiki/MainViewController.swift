@@ -56,6 +56,11 @@ extension MainViewController: UICollectionViewDataSource {
         cell.logoImageView.image = item.logoImage
         cell.nameLabel.text = item.name
         
+        cell.isAccessibilityElement = true
+        cell.accessibilityLabel = item.name
+        cell.accessibilityTraits = .button
+        cell.accessibilityIdentifier = "MainViewController.\(item.name)collectionViewCell"
+        
         return cell
     }
 }
