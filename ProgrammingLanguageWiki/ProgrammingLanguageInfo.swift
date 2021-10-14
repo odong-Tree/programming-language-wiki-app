@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ProgrammingLanguageInfo: Decodable {
+struct ProgrammingLanguageInfo: Decodable, Equatable {
     let name: String
     let wikiURL: String
     var isLike: Bool

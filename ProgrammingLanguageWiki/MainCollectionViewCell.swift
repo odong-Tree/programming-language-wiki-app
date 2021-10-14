@@ -8,5 +8,7 @@
 import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
 }

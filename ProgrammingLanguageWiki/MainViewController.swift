@@ -10,12 +10,18 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    @IBOutlet weak var listSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegate()
-        
-        mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if listSegmentedControl.selectedSegmentIndex  == 1 {
+            mainCollectionView.reloadData()
+        }
     }
 
     private func setUpDelegate() {
@@ -23,32 +29,50 @@ class MainViewController: UIViewController {
         mainCollectionView.delegate = self
     }
 
+    @IBAction func listSegment(_ sender: UISegmentedControl) {
+        mainCollectionView.reloadData()
+    }
 }
 
 // MARK: - CollectionView DataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ProgrammingLanguageInfoManager.shared.infoList.count
+        let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
+        let list = ProgrammingLanguageInfoManager.shared.infoList.filter { item in
+            return !isLikeSegmentSelected || item.isLike
+        }
+        
+        return list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {
             return UICollectionViewCell()
         }
+        let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
+        let list = ProgrammingLanguageInfoManager.shared.infoList.filter { item in
+            return !isLikeSegmentSelected || item.isLike
+        }
+        let item = list[indexPath.row]
         
-        cell.backgroundColor = .gray
+        cell.logoImageView.image = item.logoImage
+        cell.nameLabel.text = item.name
         
         return cell
     }
-    
-    
 }
 
 // MARK: - CollectionView Delegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") else { return }
+        let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
+        let list = ProgrammingLanguageInfoManager.shared.infoList.filter { item in
+            return !isLikeSegmentSelected || item.isLike
+        }
         
+        guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+
+        nextViewController.programmingLanguage = list[indexPath.row]
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
@@ -57,7 +81,7 @@ extension MainViewController: UICollectionViewDelegate {
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = mainCollectionView.frame.width * 0.45
-        let height: CGFloat = width * 1.2
+        let height: CGFloat = width * 1.1
         return CGSize(width: width, height: height)
     }
     
