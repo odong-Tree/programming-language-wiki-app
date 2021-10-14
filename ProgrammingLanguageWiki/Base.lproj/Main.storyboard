@@ -55,8 +55,8 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yv6-KS-xaX">
-                                                            <rect key="frame" x="51.5" y="161.5" width="41.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="48" y="158" width="48" height="24"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -79,8 +79,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로그래밍 언어 백과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvs-oN-Wdw">
-                                <rect key="frame" x="67.5" y="64" width="279.5" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로그래밍 언어 백과" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvs-oN-Wdw">
+                                <rect key="frame" x="41.5" y="64" width="331" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -95,6 +95,7 @@
                             <constraint firstItem="Mvs-oN-Wdw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ak8-fb-uYF"/>
                             <constraint firstItem="Mvs-oN-Wdw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bM8-Sw-e2T"/>
                             <constraint firstItem="Epw-3d-27b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="buD-P2-RwO"/>
+                            <constraint firstItem="Mvs-oN-Wdw" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.8" id="oiF-ey-Lqf"/>
                             <constraint firstItem="rCM-D1-YCG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="r7w-xw-Wuo"/>
                             <constraint firstItem="Epw-3d-27b" firstAttribute="top" secondItem="Mvs-oN-Wdw" secondAttribute="bottom" constant="10" id="wbW-Nl-959"/>
                             <constraint firstItem="rCM-D1-YCG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zjT-jn-gED"/>
@@ -130,8 +131,8 @@
                                             <action selector="backButton:" destination="fcg-1V-tzJ" eventType="touchUpInside" id="MJH-fJ-A5c"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-ia-hCG">
-                                        <rect key="frame" x="146.5" y="0.0" width="80" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba5-ia-hCG">
+                                        <rect key="frame" x="56" y="0.0" width="261" height="41"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -152,11 +153,12 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Ba5-ia-hCG" firstAttribute="width" secondItem="o6X-vR-lxl" secondAttribute="width" multiplier="0.7" id="7hg-Ws-ZyV"/>
                                     <constraint firstItem="Ba5-ia-hCG" firstAttribute="centerX" secondItem="o6X-vR-lxl" secondAttribute="centerX" id="n0k-4X-Dxc"/>
                                 </constraints>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ku-xAF">
-                                <rect key="frame" x="0.0" y="115" width="414" height="675"/>
+                                <rect key="frame" x="0.0" y="115" width="414" height="696.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4a7-W0-Ztb" userLabel="Contents Stack View">
                                         <rect key="frame" x="20.5" y="0.0" width="373" height="284"/>
@@ -169,7 +171,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb9-8f-glS">
                                                 <rect key="frame" x="166" y="263.5" width="41.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -188,12 +190,9 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="IoX-UN-Gwo"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="1Ao-3m-iOw"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLL-rA-Ouk">
-                                <rect key="frame" x="20.5" y="800" width="373" height="62"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLL-rA-Ouk">
+                                <rect key="frame" x="20.5" y="821.5" width="373" height="40.5"/>
                                 <color key="backgroundColor" red="0.32685049157141632" green="0.45023306620489689" blue="0.2987050825079266" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="QLL-rA-Ouk" secondAttribute="height" multiplier="6:1" id="oCb-Ct-EyG"/>
-                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Wiki 백과 보러가기">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
