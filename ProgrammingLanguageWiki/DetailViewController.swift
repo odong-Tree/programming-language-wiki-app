@@ -1,8 +1,6 @@
 //
-//  DetailViewController.swift
-//  ProgrammingLanguageWiki
-//
-//  Created by 김동빈 on 2021/10/12.
+// © 2021. yagom academy all rights reserved
+// This tutorial is produced by Yagom Academy and is prohibited from redistributing or reproducing.
 //
 
 import UIKit
@@ -49,6 +47,7 @@ class DetailViewController: UIViewController {
         
         updateLikeButton(item: ProgrammingLanguageInfoManager.shared.infoList[index])
     }
+    
     @IBAction func moveToURLButton(_ sender: Any) {
         guard let urlString = programmingLanguage?.wikiURL else { return }
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }

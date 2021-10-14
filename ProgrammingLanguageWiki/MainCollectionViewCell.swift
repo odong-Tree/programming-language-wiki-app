@@ -1,8 +1,6 @@
 //
-//  MainCollectionViewCell.swift
-//  ProgrammingLanguageWiki
-//
-//  Created by 김동빈 on 2021/10/12.
+// © 2021. yagom academy all rights reserved
+// This tutorial is produced by Yagom Academy and is prohibited from redistributing or reproducing.
 //
 
 import UIKit
@@ -10,5 +8,4 @@ import UIKit
 class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
 }
