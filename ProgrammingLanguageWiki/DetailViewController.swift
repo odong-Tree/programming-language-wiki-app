@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
         languageDescriptionLabel.text = item.body
         updateLikeButton(item: item)
     }
-
+    
     private func updateLikeButton(item: ProgrammingLanguageInfo) {
         isLikeButton.isSelected = item.isLike
     }
@@ -44,9 +44,16 @@ class DetailViewController: UIViewController {
     
     @IBAction func toggleLikeButton(_ sender: UIButton) {
         guard let index = programmingLanguageIndex() else { return }
-
+        
         ProgrammingLanguageInfoManager.shared.infoList[index].isLike = !ProgrammingLanguageInfoManager.shared.infoList[index].isLike
-
+        
         updateLikeButton(item: ProgrammingLanguageInfoManager.shared.infoList[index])
+    }
+    @IBAction func moveToURLButton(_ sender: Any) {
+        guard let urlString = programmingLanguage?.wikiURL else { return }
+        guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let url = URL(string: encodedURLString) else { return }
+        
+        UIApplication.shared.open(url)
     }
 }
