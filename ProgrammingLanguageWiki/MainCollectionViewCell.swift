@@ -8,14 +8,4 @@ import UIKit
 class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        configureAccessibility()
-    }
-    
-    private func configureAccessibility() {
-        logoImageView.isAccessibilityElement = false
-        nameLabel.isAccessibilityElement = false
-    }
 }
