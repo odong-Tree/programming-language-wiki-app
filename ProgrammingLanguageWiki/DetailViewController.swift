@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var isLikeButton: UIButton!
     
     var programmingLanguage: ProgrammingLanguageInfo?
+    var languageIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,21 +20,18 @@ class DetailViewController: UIViewController {
     }
     
     private func setAllData() {
-        guard let item = programmingLanguage else { return }
-        languageTitleLabel.text = item.name
-        languageImageView.image = item.logoImage
-        languageDescriptionLabel.text = item.body
-        updateLikeButton(item: item)
+        guard let index = languageIndex else { return }
+        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        languageTitleLabel.text = language.name
+        languageImageView.image = language.logoImage
+        languageDescriptionLabel.text = language.body
+        updateLikeButton()
     }
     
-    private func updateLikeButton(item: ProgrammingLanguageInfo) {
-        isLikeButton.isSelected = item.isLike
-    }
-    
-    private func programmingLanguageIndex() -> Int? {
-        guard let programmingLanguage = self.programmingLanguage else { return nil }
-        let indexPath = ProgrammingLanguageInfoManager.shared.infoList.firstIndex(of: programmingLanguage)
-        return indexPath
+    private func updateLikeButton() {
+        guard let index = languageIndex else { return }
+        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        isLikeButton.isSelected = language.isLike
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -41,11 +39,13 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func toggleLikeButton(_ sender: UIButton) {
-        guard let index = programmingLanguageIndex() else { return }
+        guard let index = languageIndex else {
+            return
+        }
         
         ProgrammingLanguageInfoManager.shared.infoList[index].isLike = !ProgrammingLanguageInfoManager.shared.infoList[index].isLike
         
-        updateLikeButton(item: ProgrammingLanguageInfoManager.shared.infoList[index])
+        updateLikeButton()
     }
     
     @IBAction func moveToURLButton(_ sender: Any) {
