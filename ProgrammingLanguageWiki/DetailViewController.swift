@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
     @IBAction func moveToURLButton(_ sender: Any) {
         guard let index = languageIndex else { return }
         let language = ProgrammingLanguageInfoManager.shared.infoList[index]
-        guard let encodedURLString = language.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let encodedURLString = language.wikiURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let url = URL(string: encodedURLString) else { return }
         
         UIApplication.shared.open(url)
