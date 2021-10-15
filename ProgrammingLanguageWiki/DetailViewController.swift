@@ -11,7 +11,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var languageDescriptionLabel: UILabel!
     @IBOutlet weak var isLikeButton: UIButton!
     
-    var programmingLanguage: ProgrammingLanguageInfo?
     var languageIndex: Int?
     
     override func viewDidLoad() {
@@ -22,6 +21,7 @@ class DetailViewController: UIViewController {
     private func setAllData() {
         guard let index = languageIndex else { return }
         let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        
         languageTitleLabel.text = language.name
         languageImageView.image = language.logoImage
         languageDescriptionLabel.text = language.body
@@ -31,6 +31,7 @@ class DetailViewController: UIViewController {
     private func updateLikeButton() {
         guard let index = languageIndex else { return }
         let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        
         isLikeButton.isSelected = language.isLike
     }
     
@@ -49,8 +50,9 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func moveToURLButton(_ sender: Any) {
-        guard let urlString = programmingLanguage?.wikiURL else { return }
-        guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let index = languageIndex else { return }
+        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        guard let encodedURLString = language.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let url = URL(string: encodedURLString) else { return }
         
         UIApplication.shared.open(url)
