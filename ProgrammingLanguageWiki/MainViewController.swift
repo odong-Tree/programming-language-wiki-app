@@ -84,7 +84,7 @@ extension MainViewController: UICollectionViewDelegate {
         
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
 
-        nextViewController.programmingLanguage = list[indexPath.row]
+        nextViewController.languageIndex = ProgrammingLanguageInfoManager.shared.infoList.firstIndex(of: list[indexPath.row])
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

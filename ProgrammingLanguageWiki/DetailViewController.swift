@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var isLikeButton: UIButton!
     
-    var programmingLanguage: ProgrammingLanguageInfo?
+    var languageIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +21,26 @@ class DetailViewController: UIViewController {
     }
     
     private func setAllData() {
-        guard let item = programmingLanguage else { return }
-        nameLabel.text = item.name
-        logoImageView.image = item.logoImage
-        descriptionLabel.text = item.body
-        updateLikeButton(item: item)
+        guard let index = languageIndex else { return }
+        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        
+        nameLabel.text = language.name
+        logoImageView.image = language.logoImage
+        descriptionLabel.text = language.body
+        updateLikeButton()
     }
     
-    private func updateLikeButton(item: ProgrammingLanguageInfo) {
-        isLikeButton.isSelected = item.isLike
+    private func updateLikeButton() {
+        guard let index = languageIndex else { return }
+        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        
+        isLikeButton.isSelected = language.isLike
         isLikeButton.accessibilityHint = isLikeButton.isSelected ? "선택됨" : "즐겨찾기에 추가하기"
     }
     
-    private func programmingLanguageIndex() -> Int? {
-        guard let programmingLanguage = self.programmingLanguage else { return nil }
-        let indexPath = ProgrammingLanguageInfoManager.shared.infoList.firstIndex(of: programmingLanguage)
-        return indexPath
-    }
-    
     private func configureAccessibility() {
-        guard let item = programmingLanguage else { return }
+        guard let index = languageIndex else { return }
+        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
         
         backButton.accessibilityLabel = "뒤로 가기"
         backButton.accessibilityIdentifier = "DetailViewCtonroller.backButton"
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
         isLikeButton.accessibilityIdentifier = "DetailViewController.isLikeButton"
         
         logoImageView.isAccessibilityElement = true
-        logoImageView.accessibilityLabel = "\(item.name) 로고"
+        logoImageView.accessibilityLabel = "\(language.name) 로고"
         logoImageView.accessibilityIdentifier = "DetailViewController.logoImageView"
         
         nameLabel.accessibilityIdentifier = "DetailViewController.nameLabel"
@@ -61,16 +61,17 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func toggleLikeButton(_ sender: UIButton) {
-        guard let index = programmingLanguageIndex() else { return }
+        guard let index = languageIndex else { return }
         
         ProgrammingLanguageInfoManager.shared.infoList[index].isLike = !ProgrammingLanguageInfoManager.shared.infoList[index].isLike
         
-        updateLikeButton(item: ProgrammingLanguageInfoManager.shared.infoList[index])
+        updateLikeButton()
     }
     
     @IBAction func moveToURLButton(_ sender: Any) {
-        guard let urlString = programmingLanguage?.wikiURL else { return }
-        guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let index = languageIndex else { return }
+        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
+        guard let encodedURLString = language.wikiURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let url = URL(string: encodedURLString) else { return }
         
         UIApplication.shared.open(url)
