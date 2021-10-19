@@ -16,7 +16,7 @@
 		346D67AE2715AED5004674EB /* ProgrammingLanguageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D67AD2715AED5004674EB /* ProgrammingLanguageInfo.swift */; };
 		346D67B02715AFF2004674EB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D67AF2715AFF2004674EB /* DetailViewController.swift */; };
 		346D67B22715B425004674EB /* ProgrammingLanguageInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D67B12715B425004674EB /* ProgrammingLanguageInfoManager.swift */; };
-		346D67B42715C4C2004674EB /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D67B32715C4C2004674EB /* MainCollectionViewCell.swift */; };
+		346D67B42715C4C2004674EB /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D67B32715C4C2004674EB /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		346D67AD2715AED5004674EB /* ProgrammingLanguageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingLanguageInfo.swift; sourceTree = "<group>"; };
 		346D67AF2715AFF2004674EB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		346D67B12715B425004674EB /* ProgrammingLanguageInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingLanguageInfoManager.swift; sourceTree = "<group>"; };
-		346D67B32715C4C2004674EB /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		346D67B32715C4C2004674EB /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,7 @@
 				346D67AF2715AFF2004674EB /* DetailViewController.swift */,
 				346D67AD2715AED5004674EB /* ProgrammingLanguageInfo.swift */,
 				346D67B12715B425004674EB /* ProgrammingLanguageInfoManager.swift */,
-				346D67B32715C4C2004674EB /* MainCollectionViewCell.swift */,
+				346D67B32715C4C2004674EB /* MainTableViewCell.swift */,
 				346D679F27157B32004674EB /* Main.storyboard */,
 				346D67A227157B35004674EB /* Assets.xcassets */,
 				346D67A427157B35004674EB /* LaunchScreen.storyboard */,
@@ -150,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				346D67B42715C4C2004674EB /* MainCollectionViewCell.swift in Sources */,
+				346D67B42715C4C2004674EB /* MainTableViewCell.swift in Sources */,
 				346D679E27157B32004674EB /* MainViewController.swift in Sources */,
 				346D679A27157B32004674EB /* AppDelegate.swift in Sources */,
 				346D67B02715AFF2004674EB /* DetailViewController.swift in Sources */,

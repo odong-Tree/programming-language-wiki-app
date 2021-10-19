@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "PHP.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "PHP.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

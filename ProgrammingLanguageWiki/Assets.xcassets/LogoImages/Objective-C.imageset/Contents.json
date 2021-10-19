@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "Objective-C.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Objective_C.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
