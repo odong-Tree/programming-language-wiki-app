@@ -23,4 +23,12 @@ class ProgrammingLanguageInfoManager {
             return
         }
     }
+    
+    func filteredList(isLikeSegment: Bool) -> [ProgrammingLanguageInfo] {
+        let list = infoList.filter { item in
+            return !isLikeSegment || item.isLike
+        }
+        
+        return list
+    }
 }

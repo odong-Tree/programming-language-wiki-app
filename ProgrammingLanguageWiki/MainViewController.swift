@@ -5,6 +5,10 @@
 
 import UIKit
 
+protocol LikeButtonDelegate {
+    func reloadCurrentList()
+}
+
 class MainViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
@@ -30,8 +34,15 @@ class MainViewController: UIViewController {
         mainTableView.delegate = self
         searchBar.delegate = self
     }
+    
+    private func updateCurrentListAccordingToSegment() {
+        let segmentValue = listSegmentedControl.selectedSegmentIndex == 1
+        currentList = ProgrammingLanguageInfoManager.shared.filteredList(isLikeSegment: segmentValue)
+    }
 
     @IBAction func listSegment(_ sender: UISegmentedControl) {
+        updateCurrentListAccordingToSegment()
+        filterListOutWithSearchBar()
         mainTableView.reloadData()
     }
 }
@@ -39,23 +50,14 @@ class MainViewController: UIViewController {
 // MARK: - UITableView DataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
-        let list = currentList.filter { item in
-            return !isLikeSegmentSelected || item.isLike
-        }
-        
-        return list.count
+        return currentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as? MainTableViewCell else {
             return UITableViewCell()
         }
-        let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
-        let list = currentList.filter { item in
-            return !isLikeSegmentSelected || item.isLike
-        }
-        let item = list[indexPath.row]
+        let item = currentList[indexPath.row]
         
         cell.logoImageView.image = item.logoImage
         cell.nameLabel.text = item.name
@@ -67,36 +69,39 @@ extension MainViewController: UITableViewDataSource {
 // MARK: - UITableView Delegate
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
-        let list = currentList.filter { item in
-            return !isLikeSegmentSelected || item.isLike
-        }
-        
         guard let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        guard let language = ProgrammingLanguageInfoManager.shared.infoList.filter({ language in
+            language.name == currentList[indexPath.row].name
+        }).first else { return }
 
-        nextViewController.languageIndex = ProgrammingLanguageInfoManager.shared.infoList.firstIndex(of: list[indexPath.row])
+        nextViewController.languageIndex = ProgrammingLanguageInfoManager.shared.infoList.firstIndex(of: language)
+        nextViewController.likeButtonDelegate = self
         self.navigationController?.pushViewController(nextViewController, animated: true)
+        self.view.endEditing(true)
     }
 }
 
 // MARK: - UISearchBar Delegate
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let input = searchBar.text, searchBar.text != "" else {
-            currentList = ProgrammingLanguageInfoManager.shared.infoList
-            mainTableView.reloadData()
-            return
-        }
-        
-        currentList = ProgrammingLanguageInfoManager.shared.infoList.filter {
-            $0.name.lowercased().contains(input.lowercased())
-        }
-        
+        filterListOutWithSearchBar()
         mainTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+    private func filterListOutWithSearchBar() {
+        guard let input = searchBar.text, searchBar.text != "" else {
+            updateCurrentListAccordingToSegment()
+            mainTableView.reloadData()
+            return
+        }
+        
+        currentList = currentList.filter {
+            $0.name.lowercased().contains(input.lowercased())
+        }
     }
 }
 
@@ -104,5 +109,13 @@ extension MainViewController: UISearchBarDelegate {
 extension MainViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+}
+
+// MARK: - LikeButton Delegate
+extension MainViewController: LikeButtonDelegate {
+    func reloadCurrentList() {
+        updateCurrentListAccordingToSegment()
+        filterListOutWithSearchBar()
     }
 }

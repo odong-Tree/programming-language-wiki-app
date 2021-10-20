@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var isLikeButton: UIButton!
     
     var languageIndex: Int?
+    var likeButtonDelegate: LikeButtonDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class DetailViewController: UIViewController {
         
         ProgrammingLanguageInfoManager.shared.infoList[index].isLike = !ProgrammingLanguageInfoManager.shared.infoList[index].isLike
         
+        likeButtonDelegate?.reloadCurrentList()
         updateLikeButton()
     }
     
