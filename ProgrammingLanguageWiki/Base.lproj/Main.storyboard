@@ -33,8 +33,12 @@
                                     <action selector="listSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="ms5-5F-gdO"/>
                                 </connections>
                             </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1go-Pk-Mjz">
+                                <rect key="frame" x="0.0" y="156" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="38t-6s-9t6">
-                                <rect key="frame" x="0.0" y="166" width="414" height="696"/>
+                                <rect key="frame" x="0.0" y="212" width="414" height="650"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTableViewCell" rowHeight="93" id="oyz-cO-Jx1" customClass="MainTableViewCell" customModule="ProgrammingLanguageWiki" customModuleProvider="target">
@@ -47,15 +51,15 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aiS-r4-X5a">
                                                     <rect key="frame" x="20.5" y="4.5" width="373" height="84"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bge-kt-crP">
-                                                            <rect key="frame" x="0.0" y="0.5" width="83" height="83"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bge-kt-crP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="84"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="bge-kt-crP" secondAttribute="height" multiplier="1:1" id="6D8-XK-CXP"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2r-9V-fXM">
-                                                            <rect key="frame" x="103" y="30" width="270" height="24"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                            <rect key="frame" x="123.5" y="29" width="249.5" height="26.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -64,7 +68,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aiS-r4-X5a" firstAttribute="width" secondItem="2xo-nw-EgC" secondAttribute="width" multiplier="0.9" id="1Zl-xc-KgQ"/>
-                                                <constraint firstItem="bge-kt-crP" firstAttribute="width" secondItem="2xo-nw-EgC" secondAttribute="width" multiplier="0.2" id="frF-pC-SCi"/>
+                                                <constraint firstItem="bge-kt-crP" firstAttribute="width" secondItem="2xo-nw-EgC" secondAttribute="width" multiplier="0.25" id="frF-pC-SCi"/>
                                                 <constraint firstItem="aiS-r4-X5a" firstAttribute="height" secondItem="2xo-nw-EgC" secondAttribute="height" multiplier="0.9" id="iW1-ca-T6g"/>
                                                 <constraint firstItem="aiS-r4-X5a" firstAttribute="centerY" secondItem="2xo-nw-EgC" secondAttribute="centerY" id="luT-v7-Ic6"/>
                                                 <constraint firstItem="aiS-r4-X5a" firstAttribute="centerX" secondItem="2xo-nw-EgC" secondAttribute="centerX" id="qwn-Yh-cMs"/>
@@ -82,13 +86,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="38t-6s-9t6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4nn-ym-5Mt"/>
-                            <constraint firstItem="38t-6s-9t6" firstAttribute="top" secondItem="Epw-3d-27b" secondAttribute="bottom" constant="20" id="9xp-yz-ATy"/>
+                            <constraint firstItem="1go-Pk-Mjz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9fe-6w-WrO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="38t-6s-9t6" secondAttribute="trailing" id="CZU-wW-tKr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="38t-6s-9t6" secondAttribute="bottom" id="MKt-JX-O6r"/>
                             <constraint firstItem="Epw-3d-27b" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.6" id="Sxb-GA-r66"/>
+                            <constraint firstItem="1go-Pk-Mjz" firstAttribute="top" secondItem="Epw-3d-27b" secondAttribute="bottom" constant="10" id="W0m-bV-7fC"/>
+                            <constraint firstItem="38t-6s-9t6" firstAttribute="top" secondItem="1go-Pk-Mjz" secondAttribute="bottom" id="ZqW-Hc-W31"/>
                             <constraint firstItem="Mvs-oN-Wdw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ak8-fb-uYF"/>
                             <constraint firstItem="Mvs-oN-Wdw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bM8-Sw-e2T"/>
                             <constraint firstItem="Epw-3d-27b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="buD-P2-RwO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1go-Pk-Mjz" secondAttribute="trailing" id="chk-qn-iRK"/>
                             <constraint firstItem="Mvs-oN-Wdw" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.8" id="oiF-ey-Lqf"/>
                             <constraint firstItem="Epw-3d-27b" firstAttribute="top" secondItem="Mvs-oN-Wdw" secondAttribute="bottom" constant="10" id="wbW-Nl-959"/>
                         </constraints>
@@ -97,6 +104,7 @@
                     <connections>
                         <outlet property="listSegmentedControl" destination="Epw-3d-27b" id="rRQ-ws-37q"/>
                         <outlet property="mainTableView" destination="38t-6s-9t6" id="vNL-De-4oL"/>
+                        <outlet property="searchBar" destination="1go-Pk-Mjz" id="MIN-SY-cwO"/>
                         <outlet property="titleLabel" destination="Mvs-oN-Wdw" id="dlP-4h-RfC"/>
                     </connections>
                 </viewController>

@@ -9,6 +9,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var listSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var currentList = ProgrammingLanguageInfoManager.shared.infoList
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,7 @@ class MainViewController: UIViewController {
     private func setUpDelegate() {
         mainTableView.dataSource = self
         mainTableView.delegate = self
+        searchBar.delegate = self
     }
 
     @IBAction func listSegment(_ sender: UISegmentedControl) {
@@ -32,11 +36,11 @@ class MainViewController: UIViewController {
     }
 }
 
-// MARK: - CollectionView DataSource
+// MARK: - UITableView DataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
-        let list = ProgrammingLanguageInfoManager.shared.infoList.filter { item in
+        let list = currentList.filter { item in
             return !isLikeSegmentSelected || item.isLike
         }
         
@@ -48,7 +52,7 @@ extension MainViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
-        let list = ProgrammingLanguageInfoManager.shared.infoList.filter { item in
+        let list = currentList.filter { item in
             return !isLikeSegmentSelected || item.isLike
         }
         let item = list[indexPath.row]
@@ -60,11 +64,11 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - CollectionView Delegate
+// MARK: - UITableView Delegate
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let isLikeSegmentSelected: Bool = listSegmentedControl.selectedSegmentIndex == 1
-        let list = ProgrammingLanguageInfoManager.shared.infoList.filter { item in
+        let list = currentList.filter { item in
             return !isLikeSegmentSelected || item.isLike
         }
         
@@ -75,3 +79,19 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UISearchBar Delegate
+extension MainViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let input = searchBar.text, searchBar.text != "" else {
+            currentList = ProgrammingLanguageInfoManager.shared.infoList
+            mainTableView.reloadData()
+            return
+        }
+        
+        currentList = ProgrammingLanguageInfoManager.shared.infoList.filter {
+            $0.name.lowercased().contains(input.lowercased())
+        }
+        
+        mainTableView.reloadData()
+    }
+}
