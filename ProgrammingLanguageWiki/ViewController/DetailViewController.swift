@@ -9,7 +9,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var languageTitleLabel: UILabel!
     @IBOutlet weak var languageImageView: UIImageView!
     @IBOutlet weak var languageDescriptionLabel: UILabel!
-    @IBOutlet weak var isLikeButton: UIButton!
+    @IBOutlet weak var isLikeButton: IsLikeButton!
     
     var languageIndex: Int?
     var likeButtonDelegate: LikeButtonDelegate?
@@ -26,29 +26,17 @@ class DetailViewController: UIViewController {
         languageTitleLabel.text = language.name
         languageImageView.image = language.logoImage
         languageDescriptionLabel.text = language.body
-        updateLikeButton()
-    }
-    
-    private func updateLikeButton() {
-        guard let index = languageIndex else { return }
-        let language = ProgrammingLanguageInfoManager.shared.infoList[index]
-        
-        isLikeButton.isSelected = language.isLike
+        isLikeButton.updateButtonStatus(index: languageIndex)
     }
     
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func toggleLikeButton(_ sender: UIButton) {
-        guard let index = languageIndex else {
-            return
-        }
-        
-        ProgrammingLanguageInfoManager.shared.infoList[index].isLike = !ProgrammingLanguageInfoManager.shared.infoList[index].isLike
-        
+    @IBAction func toggleLikeButton(_ sender: IsLikeButton) {
+        sender.updateIsLike(index: languageIndex)
+        sender.updateButtonStatus(index: languageIndex)
         likeButtonDelegate?.reloadCurrentList()
-        updateLikeButton()
     }
     
     @IBAction func moveToURLButton(_ sender: Any) {
