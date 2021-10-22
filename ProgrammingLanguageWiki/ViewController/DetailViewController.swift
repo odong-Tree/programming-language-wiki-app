@@ -26,7 +26,8 @@ class DetailViewController: UIViewController {
         languageTitleLabel.text = language.name
         languageImageView.image = language.logoImage
         languageDescriptionLabel.text = language.body
-        isLikeButton.updateButtonStatus(index: languageIndex)
+        isLikeButton.languageIndex = languageIndex
+        isLikeButton.updateButtonStatus()
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -34,8 +35,8 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func toggleLikeButton(_ sender: IsLikeButton) {
-        sender.updateIsLike(index: languageIndex)
-        sender.updateButtonStatus(index: languageIndex)
+        sender.updateIsLike()
+        sender.updateButtonStatus()
         likeButtonDelegate?.reloadCurrentList()
     }
     

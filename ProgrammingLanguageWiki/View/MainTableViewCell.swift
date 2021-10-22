@@ -8,4 +8,5 @@ import UIKit
 class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var isLikeButton: IsLikeButton!
 }

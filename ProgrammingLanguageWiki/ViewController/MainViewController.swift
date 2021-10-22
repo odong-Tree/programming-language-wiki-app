@@ -45,6 +45,11 @@ class MainViewController: UIViewController {
         filterListOutWithSearchBar()
         mainTableView.reloadData()
     }
+    
+    @IBAction func toggleLikeButton(_ sender: IsLikeButton) {
+        sender.updateIsLike()
+        sender.updateButtonStatus()
+    }
 }
 
 // MARK: - UITableView DataSource
@@ -58,9 +63,12 @@ extension MainViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let item = currentList[indexPath.row]
+        let languageIndex = ProgrammingLanguageInfoManager.shared.infoList.firstIndex(of: item)
         
         cell.logoImageView.image = item.logoImage
         cell.nameLabel.text = item.name
+        cell.isLikeButton.languageIndex = languageIndex
+        cell.isLikeButton.updateButtonStatus()
         
         return cell
     }

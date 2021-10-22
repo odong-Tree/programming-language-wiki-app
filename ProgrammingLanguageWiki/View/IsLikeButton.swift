@@ -8,15 +8,23 @@
 import UIKit
 
 class IsLikeButton: UIButton {
-    func updateButtonStatus(index: Int?) {
-        guard let index = index else { return }
+    var languageIndex: Int?
+    
+    func updateButtonStatus() {
+        guard let index = languageIndex else { return }
         let language = ProgrammingLanguageInfoManager.shared.infoList[index]
         
         self.isSelected = language.isLike
+        
+        if isSelected {
+            self.setImage(UIImage(systemName: "star.fill"), for: UIControl.State.normal)
+        } else {
+            self.setImage(UIImage(systemName: "star"), for: UIControl.State.normal)
+        }
     }
     
-    func updateIsLike(index: Int?) {
-        guard let index = index else { return }
+    func updateIsLike() {
+        guard let index = languageIndex else { return }
         
         ProgrammingLanguageInfoManager.shared.infoList[index].isLike = !ProgrammingLanguageInfoManager.shared.infoList[index].isLike
     }
