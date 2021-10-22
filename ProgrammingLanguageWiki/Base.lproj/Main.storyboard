@@ -125,10 +125,9 @@
                                 <rect key="frame" x="20.5" y="64" width="373" height="41"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laq-tg-WQ7">
-                                        <rect key="frame" x="0.0" y="3.5" width="38.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="10.5" width="28.5" height="20.5"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.backward" catalog="system"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                         <connections>
                                             <action selector="backButton:" destination="fcg-1V-tzJ" eventType="touchUpInside" id="MJH-fJ-A5c"/>
                                         </connections>
@@ -140,7 +139,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7J6-Ip-UAm">
-                                        <rect key="frame" x="334.5" y="7.5" width="38.5" height="26.5"/>
+                                        <rect key="frame" x="344.5" y="7.5" width="28.5" height="26.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="tintColor" systemColor="systemYellowColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
