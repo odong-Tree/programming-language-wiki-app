@@ -73,14 +73,9 @@
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                                 </preferredSymbolConfiguration>
                                                             </state>
-                                                            <connections>
-                                                                <action selector="toggleLikeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="636-dh-sWh"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="H8b-OL-DJC" secondAttribute="trailing" id="MPv-mW-UUZ"/>
-                                                        <constraint firstItem="H8b-OL-DJC" firstAttribute="centerY" secondItem="aiS-r4-X5a" secondAttribute="centerY" id="f77-4l-uyi"/>
                                                         <constraint firstItem="G2r-9V-fXM" firstAttribute="leading" secondItem="bge-kt-crP" secondAttribute="trailing" constant="20" id="q2S-xq-PBY"/>
                                                     </constraints>
                                                 </stackView>
