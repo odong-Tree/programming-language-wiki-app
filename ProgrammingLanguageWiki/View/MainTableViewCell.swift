@@ -9,4 +9,16 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isLikeButton: IsLikeButton!
+    
+    var likeButtonDelegate: LikeButtonDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    @IBAction func toggleLikeButton(_ sender: IsLikeButton) {
+        sender.updateIsLike()
+        sender.updateButtonStatus()
+        likeButtonDelegate?.reloadCurrentList()
+    }
 }
